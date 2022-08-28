@@ -51,7 +51,7 @@ public class TestBase {
 
 	}
 
-	@BeforeMethod
+	@BeforeTest
 	public  void configBrowser() throws Exception {
 
 		WebDriverManager.chromedriver().setup();
@@ -71,8 +71,9 @@ public class TestBase {
 
 	}
 
-	@AfterMethod
+	@AfterTest
 	public  void closeBrowser() {
+		System.out.println("2");
 		driver.quit();
 
 	}

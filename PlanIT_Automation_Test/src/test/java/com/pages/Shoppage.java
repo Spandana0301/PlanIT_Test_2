@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Adding_items_in_cart_page{
+public class Shoppage{
 
 	@FindBy(xpath = "//a[contains(@href,'shop')]")
 	public WebElement shop;
@@ -22,7 +22,7 @@ public class Adding_items_in_cart_page{
 	@FindBy(xpath = "//li[contains(.,'Valentine Bear')]//a[contains(@class,'btn btn-success')]")
 	public WebElement Valentinebear;
 
-	public Adding_items_in_cart_page(WebDriver driver) {
+	public Shoppage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 
 	}

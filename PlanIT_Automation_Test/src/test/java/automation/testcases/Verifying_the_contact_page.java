@@ -1,48 +1,67 @@
 package automation.testcases;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
+
 import org.testng.annotations.Test;
-import com.assertions.Contact_Page_Expected_Actual_values;
+
 import com.base.TestBase;
-import com.pages.Contact_page;
-import com.pages.Populating_fields_in_contact_page;
+import com.pages.Contactpage;
 
 public class Verifying_the_contact_page extends TestBase {
-	@Test
+	/*@Test()
 
 	public void validateErrors()  {
 
 		// Navigating to contact page
-		Contact_page cp = new Contact_page(driver);
-		cp.clickContact();
-
+		Contactpage cp = new Contactpage(driver);
+		cp.clickContactBtn();
+		System.out.println("a1");
 		// Submitting the form in contact page without any data
-		Populating_fields_in_contact_page pc = new Populating_fields_in_contact_page(driver);
-		pc.pagedown(driver);
-		pc.clickSubmitBtn();
-
-		Contact_Page_Expected_Actual_values validations = new Contact_Page_Expected_Actual_values(driver);
+		
+		cp.pagedown(driver);
+		cp.clickSubmitBtn();
+       
+		System.out.println("a2");
 		// checking forename error message is displayed
-		assertEquals(validations.forNameError(), validations.forenameerror);
-
+		assertEquals(cp.forenameerror,cp.fornameRequired());
+		System.out.println("a3");
 		// checking email error message is displayed
-		assertEquals(validations.emailError(), validations.emailerror);
-
+		assertEquals(cp.emailerror,cp.emailRequired());
+		System.out.println("a4");
 		// checking message error message is displayed
-		assertEquals(validations.messageError(), validations.messageerror);
-
+		assertEquals(cp.messageerror,cp.messageRequired() );
+		System.out.println("a5");
 		// Populating mandetory fields in the contact page
-		pc.enteringName();
-		pc.enteringEmail();
-		pc.enteringMessage();
-
+		cp.enteringName("John");
+		cp.enteringEmail("John@email.com");
+		cp.enteringMessage("Hello");
+		System.out.println("a6");
 		// Verifing the error messages are not present
-		assertEquals(validations.fornamePresent(),validations.notDisplayed);
+		assertNull(cp.fornameRequired());
+		System.out.println("a7");
+		assertNull(cp.emailRequired());
+		System.out.println("a8");
+		assertNull(cp.messageRequired());
+		System.out.println("a9");
+	}*/
+        
+       @Test(invocationCount=1)
+        public void validateSuccess() {
+        Contactpage cp = new Contactpage(driver);
+        cp.clickContactBtn();
+        cp.enteringName("John");
+		cp.enteringEmail("John@email.com");
+		cp.enteringMessage("Hello");
+		cp.pagedown(driver);
 		
-		assertEquals(validations.emailPresent(), validations.notDisplayed);
+		// Submitting the form with valid mandetory input
+		cp.clickSubmitBtn();
+		 
 		
-        assertEquals(validations.messagePresent(), validations.notDisplayed);
+        assertEquals(cp.expectedMessage(),cp.successfulMessage());
+		
 
-	}
+        }
 
 }
