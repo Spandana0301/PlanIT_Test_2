@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automation.testcases.Validating_Thanks_Message">
+      <class name="automation.testcases.Verifying_the_contact_page">
         <methods>
           <include name="configBrowser"/>
-          <include name="closeBrowser"/>
           <include name="validateSuccess"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- automation.testcases.Validating_Thanks_Message -->
+      </class> <!-- automation.testcases.Verifying_the_contact_page -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

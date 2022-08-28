@@ -38,10 +38,19 @@ public class Contact_Page_Expected_Actual_values extends TestBase{
 	}
 	
     
-    public Boolean fornamePresent() {
-	Boolean fornamepresent =driver.getPageSource().contains(forenameerror) ;
-		return fornamepresent;
+    public String fornamePresent() {
+	try {
+		String forname = driver.findElement(By.xpath("//span[@id='forename-err']")).getText();
+		return  forname;
+		}
+		
+		catch (Exception e){
+			 String forname = null;
+			return forname;
+		}
 	}
+    
+    
     public Boolean emailPresent() {
 	Boolean emailpresent = driver.getPageSource().contains(emailerror);
 		return emailpresent;
