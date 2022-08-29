@@ -4,9 +4,9 @@
 <suite name="planit" thread-count="5" parallel="classes">
 	<test name="Assessment">
 		<classes>
-			<class name="automation.testcases.Validating_Thanks_Message" />
-			<class name="automation.testcases.Verifying_items_in_cart" />
-			<class name="automation.testcases.Verifying_the_contact_page" />
+			<class name="jupitortoystestcases.ContactPage" />
+			<class name="jupitortoystestcases.ShopPage" />
+			
 		</classes>
 
 	</test>
