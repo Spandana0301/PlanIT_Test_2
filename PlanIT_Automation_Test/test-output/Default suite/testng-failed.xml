@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="jupitortoystestcases.ContactPage">
+      <class name="jupitortoystestcases.Shoptest">
         <methods>
+          <include name="verifyingCartItems"/>
           <include name="openingBrowser"/>
           <include name="closeBrowser"/>
-          <include name="validateSuccess"/>
         </methods>
-      </class> <!-- jupitortoystestcases.ContactPage -->
+      </class> <!-- jupitortoystestcases.Shoptest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

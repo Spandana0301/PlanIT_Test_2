@@ -1,4 +1,4 @@
-package pages;
+package jupitortoystestcases;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Homepage {
+public class Basetest {
 	
 	public  WebDriver driver;
 	

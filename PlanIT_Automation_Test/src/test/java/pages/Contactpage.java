@@ -14,9 +14,6 @@ public class Contactpage {
 
 	}
 
-	@FindBy(xpath = "//a[contains(@href,'contact')]")
-	public WebElement contact;
-
 	@FindBy(xpath = "//a[contains(@class,'primary')]")
 	public WebElement submit;
 
@@ -24,89 +21,84 @@ public class Contactpage {
 	public WebElement foreName;
 
 	@FindBy(id = "surname")
-	public WebElement Surname;
+	public WebElement surname;
 
 	@FindBy(id = "email")
 	public WebElement emailId;
 
 	@FindBy(id = "telephone")
-	public WebElement Telephone;
+	public WebElement telephone;
 
 	@FindBy(name = "message")
 	public WebElement messagee;
 
 	@FindBy(xpath = "//span[@id='forename-err']")
-	public WebElement Forenamerequired;
+	public WebElement forenameerror;
 
 	@FindBy(xpath = "//span[@id='email-err']")
-	public WebElement Emailrequired;
+	public WebElement emailerror;
 
-	@FindBy(xpath = "//span[text()='Please enter a valid email']")
-	public WebElement invalidemail;
-
+	
 	@FindBy(xpath = "//span[@id='message-err']")
-	public WebElement Messagerequired;
+	public WebElement messageerror;
 
 	@FindBy(xpath = "//div[contains(@class,'alert alert-success')]")
-	public WebElement SuccessfulMessage;
+	public WebElement successfulMessage;
 
 	
 
-	public void clickContactBtn() {
-         contact.click();
-	}
 
 	public void clickSubmitBtn() {
 		submit.click();
 
 	}
 
-	public void enteringforeName(String ForName) {
+	public void enterforeName(String ForName) {
 		foreName.sendKeys(ForName);
 	}
 
-	public void enteringSurname(String surname) {
-		Surname.sendKeys(surname);
+	public void enterSurname(String Surname) {
+		surname.sendKeys(Surname);
 	}
 
-	public void enteringEmail(String EmailId) {
+	public void enterEmail(String EmailId) {
 		emailId.click();
 		emailId.clear();
 		emailId.sendKeys(EmailId);
 
 	}
 
-	public void enteringInvalidEmail(String InvalidEmail) {
+	public void enterInvalidEmail(String InvalidEmail) {
 		emailId.sendKeys(InvalidEmail);
 
 	}
 
-	public void enteringMessage(String Message) {
+	public void enterMessage(String Message) {
 		messagee.sendKeys(Message);
 
 	}
 
-	public void enteringTelephoneNum(String Telephonenum) {
-		Telephone.sendKeys(Telephonenum);
+	public void enterTelephoneNum(String Telephonenum) {
+		telephone.sendKeys(Telephonenum);
 
 	}
 
 	public String invalidEmail() {
-		return invalidemail.getText();
+		return emailerror.getText();
 	}
 
-	public String forenameRequired() {
+	public String getForenameError() {
 		try {
-			return Forenamerequired.getText();
+			return forenameerror.getText();
 		} catch (Exception e) {
 			String ForName = null;
 			return ForName;
 		}
 	}
 
-	public String emailRequired() {
+	public String getEmailError() {
 		try {
-			return Emailrequired.getText();
+			return emailerror.getText();
 		} catch (Exception e) {
 			String Emailid = null;
 			return Emailid;
@@ -114,9 +106,9 @@ public class Contactpage {
 		}
 	}
 
-	public String messageRequired() {
+	public String getMessageError() {
 		try {
-			return Messagerequired.getText();
+			return messageerror.getText();
 		} catch (Exception e) {
 			String Message = null;
 			return Message;
@@ -129,14 +121,9 @@ public class Contactpage {
 
 	}
 
-	public String successfulMessage() {
-		return SuccessfulMessage.getText();
+	public String getSuccessfulMessage() {
+		return successfulMessage.getText();
 
-	}
-
-	public String expectedSuccessfulMessage(String ForeName) {
-        String expectedmessage = "Thanks " + ForeName + ", we appreciate your feedback.";
-		return expectedmessage;
 	}
 
 }
