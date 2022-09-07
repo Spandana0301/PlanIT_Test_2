@@ -9,6 +9,7 @@ public class BasePage extends BaseTest{
 
 	By  shop=By.xpath("//a[contains(@href,'shop')]");
 	
+	By cart=By.xpath("//i[@class='icon icon-shopping-cart icon-white']");
 	
 	public BasePage(WebDriver driver) {
 		this.driver=driver;
@@ -19,8 +20,15 @@ public class BasePage extends BaseTest{
 		driver.findElement(contact).click();
 	}
 	
-	public void clickShopButton() {
+	public ShopPage clickShopButton() {
 		driver.findElement(shop).click();
+		return new ShopPage(driver);
+			
+	}
+	
+	public CartPage clickCartButton() {
+		driver.findElement(cart).click();
+		return new CartPage(driver);
 		
 		
 	}
