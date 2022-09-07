@@ -4,8 +4,8 @@
 <suite name="planit" thread-count="5" parallel="classes">
 	<test name="Assessment">
 		<classes>
-			<class name="jupitortoystestcases.ContactPage" />
-			<class name="jupitortoystestcases.ShopPage" />
+			<class name="jupitortoystestcases.ContactTest" />
+			<class name="jupitortoystestcases.ShopTest" />
 			
 		</classes>
 

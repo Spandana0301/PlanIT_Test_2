@@ -9,7 +9,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	
-	public  WebDriver driver;
+	protected  WebDriver driver;
 	
 	@BeforeMethod
 	public  void openingBrowser()  {

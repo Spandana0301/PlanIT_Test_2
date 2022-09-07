@@ -1,6 +1,12 @@
 package pages;
-import jupitortoystestcases.BaseTest;
+import org.openqa.selenium.WebDriver;
 
-public class HomePage extends BaseTest{
+
+public class HomePage extends BasePage{
+
+	public HomePage(WebDriver driver) {
+		super(driver);
+		
+	}
 
 }

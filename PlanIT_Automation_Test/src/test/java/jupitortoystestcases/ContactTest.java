@@ -49,7 +49,7 @@ public class ContactTest extends BaseTest {
 
 	    }
 
-	    @Test()
+	    @Test(invocationCount=5)
 	    public void validateSuccess() throws Exception {
 
 		// Populating Mandatory fields

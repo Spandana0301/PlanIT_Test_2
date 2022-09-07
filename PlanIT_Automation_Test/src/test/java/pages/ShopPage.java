@@ -1,45 +1,30 @@
 package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import jupitortoystestcases.BaseTest;
 
 public class ShopPage extends BaseTest {
-
-
-	By fluffybunny = By.xpath("//h4[contains(text(), 'Fluffy Bunny')]/following-sibling::p/a");
-
-	By stuffedfrog = By.xpath("//h4[contains(text(), 'Stuffed Frog')]/following-sibling::p/a");
-
-	By valentinebear = By.xpath("//h4[contains(text(), 'Valentine Bear')]/following-sibling::p/a");
 
 	public ShopPage(WebDriver driver) {
 
 		this.driver = driver;
 	}
 
-	public void addStuffedfrogToCart(int number) {
+	public void buyItem(String itemName, int numberOfItems) {
+		WebElement itemContainer = findItem(itemName);
+		WebElement buyButton = itemContainer.findElement(By.xpath(".//a[text()='Buy']"));
+		for (int i = numberOfItems; i > 0; i--) {
+			buyButton.click();
 
-		while (number != 0) {
-			driver.findElement(stuffedfrog).click();
-			number = number - 1;
-		}
-	}
-
-	public void addFluffybunnyTocart(int number) {
-
-		while (number != 0) {
-			driver.findElement(fluffybunny).click();
-			number = number - 1;
 		}
 
 	}
 
-	public void addValentinebearToCart(int number) {
+	private WebElement findItem(String itemName) {
+		return driver.findElement(By.xpath("//h4[text()='" + itemName + "']/ancestor::li"));
 
-		while (number != 0) {
-            driver.findElement(valentinebear).click();
-			number = number - 1;
-		}
 	}
 
 }
