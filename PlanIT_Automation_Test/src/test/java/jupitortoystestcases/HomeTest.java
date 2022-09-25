@@ -8,11 +8,11 @@ import pages.LogInPopUp;
 import pages.LogOutPopUp;
 
 public class HomeTest extends BaseTest {
-	LogInDetails logInDetails=new LogInDetails("John@gmail.com", "letmei");
-	
-	//Exercise 17 login and logout from homepage
-    @Test
-	public void logInLogOut() throws Exception {
+	LogInDetails logInDetails = new LogInDetails("John@gmail.com", "letmei");
+
+	// Exercise 17 login and logout from homepage
+	@Test
+	public void logInLogOut() {
 		BasePage basepage = new BasePage(driver);
 		basepage.clickLoginButton();
 		LogInPopUp loginpopup = new LogInPopUp(driver);
@@ -25,10 +25,9 @@ public class HomeTest extends BaseTest {
 		logoutpopup.clickLogOutButtonOnPopUp();
 	}
 
-
-	//Exercise 16 Failed login by giving incorrect Password
+	// Exercise 16 Failed login by giving incorrect Password
 	@Test
-	public void failedLogIn(){
+	public void failedLogIn() {
 		BasePage basepage = new BasePage(driver);
 		basepage.clickLoginButton();
 		LogInPopUp loginpopup = new LogInPopUp(driver);
@@ -36,7 +35,7 @@ public class HomeTest extends BaseTest {
 		loginpopup.enterPassword(logInDetails.getPassword());
 		loginpopup.clickLogInButton();
 		assertEquals(loginpopup.getLoginIncorrectErrorMessage(), "Your login details are incorrect");
-		
+
 	}
 
 }
