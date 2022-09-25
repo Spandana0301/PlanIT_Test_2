@@ -4,9 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import jupitortoystestcases.BaseTest;
 
-public class ContactPage extends BaseTest {
+import data.ContactDetails;
+
+public class ContactPage extends BasePage {
 
 	By submit = By.xpath("//a[contains(@class,'primary')]");
 
@@ -27,37 +28,37 @@ public class ContactPage extends BaseTest {
 	By messageerror = By.xpath("//span[@id='message-err']");
 
 	public ContactPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 
 	}
 
-	public void enterforeName(String ForName) {
-		driver.findElement(foreName).sendKeys(ForName);
+	public void enterforeName(String forName) {
+		driver.findElement(foreName).sendKeys(forName);
 	}
 
-	public void enterSurname(String Surname) {
-		driver.findElement(surname).sendKeys(Surname);
+	public void enterSurname(String surName) {
+		driver.findElement(surname).sendKeys(surName);
 	}
 
-	public void enterEmail(String EmailId) {
+	public void enterEmail(String email) {
 		driver.findElement(emailId).click();
 		driver.findElement(emailId).clear();
-		driver.findElement(emailId).sendKeys(EmailId);
+		driver.findElement(emailId).sendKeys(email);
 
 	}
 
-	public void enterInvalidEmail(String InvalidEmail) {
-		driver.findElement(emailId).sendKeys(InvalidEmail);
+	public void enterInvalidEmail(String invalidEmail) {
+		driver.findElement(emailId).sendKeys(invalidEmail);
 
 	}
 
-	public void enterMessage(String Message) {
-		driver.findElement(messagee).sendKeys(Message);
+	public void enterMessage(String message) {
+		driver.findElement(messagee).sendKeys(message);
 
 	}
 
-	public void enterTelephoneNum(String Telephonenum) {
-		driver.findElement(telephone).sendKeys(Telephonenum);
+	public void enterTelephoneNum(String telephoneNumber) {
+		driver.findElement(telephone).sendKeys(telephoneNumber);
 
 	}
 
@@ -97,8 +98,17 @@ public class ContactPage extends BaseTest {
 
 	public void clickSubmitButton() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebElement element = driver.findElement(submit);
-		js.executeScript("arguments[0].click();", element);
+		WebElement submitButton = driver.findElement(submit);
+		js.executeScript("arguments[0].scrollIntoView()", submitButton);
+		submitButton.click();
 	}
 
+	public void fillingTheForm(ContactDetails contactdetails) {
+		enterforeName(contactdetails.getForeName());
+		enterSurname(contactdetails.getSurName());
+		enterEmail(contactdetails.getEmail());
+		enterTelephoneNum(contactdetails.getTelephoneNumber());
+		enterMessage(contactdetails.getMessage());
+
+	}
 }

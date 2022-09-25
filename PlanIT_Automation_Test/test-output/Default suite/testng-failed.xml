@@ -5,9 +5,9 @@
     <classes>
       <class name="jupitortoystestcases.ShopTest">
         <methods>
-          <include name="verifyingCartItems"/>
           <include name="closeBrowser"/>
           <include name="openingBrowser"/>
+          <include name="emptyCart"/>
         </methods>
       </class> <!-- jupitortoystestcases.ShopTest -->
     </classes>

@@ -1,82 +1,110 @@
 package pages;
-import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import jupitortoystestcases.BaseTest;
+import data.ProductDetails;
 
-public class CartPage extends BaseTest {
+public class CartPage extends BasePage {
 
-	By removeStuffedfrog = By.xpath("//tr[1]//td[5]//a/i[contains(@class,'icon-remove icon-white')]");
-
-	By accept = By.xpath("//div/a[contains(@class,'btn btn-success')]");
-
-	By stuffedFrogItem = By.xpath("//tr/td[1][contains(text(),' Stuffed Frog')]");
+	By totalPrice = By.xpath("//strong[@class='total ng-binding']");
 
 	By checkOut = By.xpath("//a[text()='Check Out']");
 
+	By emptycart = By.xpath("//a[@class='btn btn-danger ng-scope']");
+
+	By cartEmptyMessage = By.className("alert"); 
+	
+
 	public CartPage(WebDriver driver) {
-		this.driver = driver;
-
-	}
-
-	public String getItemPrice(String itemName) {
-
-		String itemPrice = driver.findElement(By.xpath("//tr/td[contains(text(),'" + itemName + "')]/following-sibling::td[1]")).getText();
-		return itemPrice;
+		super(driver);
 
 	}
 
 	public String getItemSubtotal(String itemName) {
-
-		String itemSubtotal = driver.findElement(By.xpath("//tr/td[contains(text(),'" + itemName + "')]/following-sibling::td[3]")).getText();
+		WebElement itemContainer = findItem(itemName);
+		WebElement productSubtotal = itemContainer.findElement(By.xpath(".//td[4]"));
+		String itemSubtotal = productSubtotal.getText();
 		return itemSubtotal;
 
 	}
-	
-	public int getTotalQuantity() {
-		List <WebElement> rows= driver.findElements(By.xpath("//tr/td[1]"));
-		int j=rows.size()-2;
-		int totalQuantity =0;
-		for(int i=1;i<=j;i++) {
-			String quantity=driver.findElement(By.xpath("//tr["+i+"]//td[3]/input")).getAttribute("value");
-			int intQuantity= Integer.valueOf(quantity);
-		    totalQuantity = totalQuantity + intQuantity;
-		}
-		return totalQuantity;
+
+	private WebElement findItem(String itemName) {
+		return driver.findElement(By.xpath("//tr[./td[normalize-space(text())='" + itemName + "']]"));
 	}
-	
+
+	public String getItemPrice(String itemName) {
+		WebElement itemContainer = findItem(itemName);
+		WebElement productPrice = itemContainer.findElement(By.xpath(".//td[2]"));
+		String itemPrice = productPrice.getText();
+		return itemPrice;
+
+	}
+
+	public String getItemQuantity(String itemName) {
+		WebElement itemContainer = findItem(itemName);
+		WebElement productQuantity = itemContainer.findElement(By.xpath(".//td[3]/input"));
+		String itemQuantity = productQuantity.getAttribute("value");
+		return itemQuantity;
+
+	}
+
 	public String getTotalPrice() {
-
-     	return driver.findElement(By.xpath("//tfoot/tr[1]/td[1]")).getText();
-		
-
+		return driver.findElement(totalPrice).getText();
 	}
 
-	public void removeStuffedFrog() {
-		
-		driver.findElement(removeStuffedfrog).click();
+	public int getDecimalsinTotalPrice() {
 
+		String[] splitter = driver.findElement(totalPrice).getText().substring(7).split("\\.");
+		return splitter[1].length();
 	}
 
-	public void accept() {
-
-		driver.findElement(accept).click();
+	public void clickRemoveItem(String itemName) {
+		WebElement itemContainer = findItem(itemName);
+		WebElement removingItem = itemContainer.findElement(By.xpath(".//i[@class='icon-remove icon-white']"));
+		removingItem.click();
 	}
 
-	public boolean getStuffedFrog() {
+	public boolean checkingItemInCart(String itemName) {
 
 		try {
-			return driver.findElement(stuffedFrogItem).isDisplayed();
+			WebElement itemContainer = findItem(itemName);
+			return itemContainer.isDisplayed();
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
-	public void checkOutButton() {
+	public boolean checkingIteminCart(String itemName) {
+		WebElement itemContainer = findItem(itemName);
+		return itemContainer.isDisplayed();
+	}
+
+	public void ClickCheckOutButton() {
 
 		driver.findElement(checkOut).click();
+	}
+
+	public void clickEmptyCartButton() {
+		driver.findElement(emptycart).click();
+	}
+
+	public String getcartEmptyMessage() {
+		return driver.findElement(cartEmptyMessage).getText();
+	}
+
+	public void findQuantity(String itemName, int quantity) {
+		WebElement itemContainer = findItem(itemName);
+		WebElement productQuantity = itemContainer.findElement(By.xpath(".//td[3]/input"));
+		productQuantity.click();
+		productQuantity.clear();
+		productQuantity.sendKeys(String.valueOf(quantity));
+
+	}
+
+	public void changingQuantities(ProductDetails productdetails) {
+		findQuantity(productdetails.getitemName1(), productdetails.getQuantityForItem1());
+		findQuantity(productdetails.getitemName2(), productdetails.getQuantityForItem2());
 	}
 
 }

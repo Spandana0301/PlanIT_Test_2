@@ -4,9 +4,10 @@
 <suite name="planit" thread-count="5" parallel="classes">
 	<test name="Assessment">
 		<classes>
+			<class name="jupitortoystestcases.HomeTest" />
 			<class name="jupitortoystestcases.ContactTest" />
 			<class name="jupitortoystestcases.ShopTest" />
-			
+
 		</classes>
 
 	</test>

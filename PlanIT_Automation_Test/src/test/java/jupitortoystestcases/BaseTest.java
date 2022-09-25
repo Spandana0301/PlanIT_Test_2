@@ -8,12 +8,12 @@ import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-	
-	protected  WebDriver driver;
-	
-	@BeforeMethod
-	public  void openingBrowser()  {
 
+	protected WebDriver driver;
+
+	@BeforeMethod
+	public void openingBrowser() {
+		
 		WebDriverManager.chromedriver().setup();
 
 		driver = new ChromeDriver();
@@ -23,13 +23,13 @@ public class BaseTest {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofMinutes(2));
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-		
+
 		driver.get("https://jupiter.cloud.planittesting.com/#/");
-		
+
 	}
 
 	@AfterMethod
-	public  void closeBrowser() {
+	public void closeBrowser() {
 		driver.quit();
 
 	}
