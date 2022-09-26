@@ -143,8 +143,7 @@ public class ShopTest extends BaseTest {
 		cartpage.clickEmptyCartButton();
 		EmptyCartPopUp emptycartpopup = new EmptyCartPopUp(driver);
 		emptycartpopup.clickYesButton();
-		System.out.println(cartpage.getcartEmptyMessage());
-		assertEquals(cartpage.getcartEmptyMessage(), "Your cart is empty - there's nothing to see here.]");
+		assertEquals(cartpage.getcartEmptyMessage(), "×\r\n"+ "Your cart is empty - there's nothing to see here.");
 
 	}
 

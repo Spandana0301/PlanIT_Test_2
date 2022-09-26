@@ -2,23 +2,25 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-09-26T09:00:12 AEST" name="Default suite" finished-at="2022-09-26T09:00:29 AEST" duration-ms="17081">
+  <suite started-at="2022-09-26T10:28:28 AEST" name="Default suite" finished-at="2022-09-26T10:28:44 AEST" duration-ms="16270">
     <groups>
     </groups>
-    <test started-at="2022-09-26T09:00:12 AEST" name="Default test" finished-at="2022-09-26T09:00:29 AEST" duration-ms="17081">
+    <test started-at="2022-09-26T10:28:28 AEST" name="Default test" finished-at="2022-09-26T10:28:44 AEST" duration-ms="16270">
       <class name="jupitortoystestcases.ShopTest">
-        <test-method is-config="true" signature="openingBrowser()[pri:0, instance:jupitortoystestcases.ShopTest@5876a9af]" started-at="2022-09-26T09:00:12 AEST" name="openingBrowser" finished-at="2022-09-26T09:00:28 AEST" duration-ms="15399" status="PASS">
+        <test-method is-config="true" signature="openingBrowser()[pri:0, instance:jupitortoystestcases.ShopTest@5876a9af]" started-at="2022-09-26T10:28:28 AEST" name="openingBrowser" finished-at="2022-09-26T10:28:42 AEST" duration-ms="14504" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openingBrowser -->
-        <test-method signature="emptyCart()[pri:0, instance:jupitortoystestcases.ShopTest@5876a9af]" started-at="2022-09-26T09:00:28 AEST" name="emptyCart" finished-at="2022-09-26T09:00:29 AEST" duration-ms="1354" status="FAIL">
+        <test-method signature="emptyCart()[pri:0, instance:jupitortoystestcases.ShopTest@5876a9af]" started-at="2022-09-26T10:28:42 AEST" name="emptyCart" finished-at="2022-09-26T10:28:44 AEST" duration-ms="1433" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [Your cart is empty - there's nothing to see here.]] but found [×
+              <![CDATA[expected [×
+Your cart is empty - there's nothing to see here.] but found [×
 Your cart is empty - there's nothing to see here.]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Your cart is empty - there's nothing to see here.]] but found [×
+              <![CDATA[java.lang.AssertionError: expected [×
+Your cart is empty - there's nothing to see here.] but found [×
 Your cart is empty - there's nothing to see here.]
 at org.testng.Assert.fail(Assert.java:99)
 at org.testng.Assert.failNotEquals(Assert.java:1037)
@@ -61,7 +63,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- emptyCart -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:jupitortoystestcases.ShopTest@5876a9af]" started-at="2022-09-26T09:00:29 AEST" name="closeBrowser" finished-at="2022-09-26T09:00:29 AEST" duration-ms="273" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:jupitortoystestcases.ShopTest@5876a9af]" started-at="2022-09-26T10:28:44 AEST" name="closeBrowser" finished-at="2022-09-26T10:28:44 AEST" duration-ms="278" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
